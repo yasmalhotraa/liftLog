@@ -53,19 +53,16 @@ const WorkoutHeader = ({
           <p className="text-blue-500 text-3xl font-semibold font-mono">
             {formattedTime}
           </p>
-
           <p className="text-zinc-500 text-sm mt-1">Duration</p>
         </div>
 
         <div>
           <p className="text-3xl font-semibold">{volume} kg</p>
-
           <p className="text-zinc-500 text-sm mt-1">Volume</p>
         </div>
 
         <div className="text-right">
           <p className="text-3xl font-semibold">{completedSets}</p>
-
           <p className="text-zinc-500 text-sm mt-1">Sets</p>
         </div>
       </div>

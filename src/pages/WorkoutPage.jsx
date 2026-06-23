@@ -20,10 +20,7 @@ const WorkoutPage = () => {
     return saved ? JSON.parse(saved) : false;
   });
 
-  const [duration, setDuration] = useState(() => {
-    const saved = localStorage.getItem("duration");
-    return saved ? JSON.parse(saved) : 0;
-  });
+  const [duration, setDuration] = useState(0);
 
   const [restTimer, setRestTimer] = useState({
     isOpen: false,
@@ -42,11 +39,14 @@ const WorkoutPage = () => {
   }, [isWorkoutStarted]);
 
   useEffect(() => {
-    localStorage.setItem("duration", JSON.stringify(duration));
-  }, [duration]);
-
-  useEffect(() => {
     if (location.state?.autoStart && !isWorkoutStarted) {
+      localStorage.setItem(
+        "workoutSnapshot",
+        JSON.stringify(structuredClone(workout)),
+      );
+
+      localStorage.setItem("workoutStartTime", Date.now());
+
       setIsWorkoutStarted(true);
     }
   }, []);
@@ -54,9 +54,17 @@ const WorkoutPage = () => {
   useEffect(() => {
     if (!isWorkoutStarted) return;
 
-    const interval = setInterval(() => {
-      setDuration((prev) => prev + 1);
-    }, 1000);
+    const updateDuration = () => {
+      const start = Number(localStorage.getItem("workoutStartTime"));
+
+      if (!start) return;
+
+      setDuration(Math.floor((Date.now() - start) / 1000));
+    };
+
+    updateDuration();
+
+    const interval = setInterval(updateDuration, 1000);
 
     return () => clearInterval(interval);
   }, [isWorkoutStarted]);
@@ -89,6 +97,29 @@ const WorkoutPage = () => {
     });
   };
 
+  const discardWorkout = () => {
+    const snapshot = JSON.parse(localStorage.getItem("workoutSnapshot"));
+
+    if (!snapshot) return;
+
+    setWorkout(snapshot);
+
+    setDuration(0);
+    setIsWorkoutStarted(false);
+
+    setRestTimer({
+      isOpen: false,
+      seconds: 0,
+    });
+
+    localStorage.removeItem("workoutSnapshot");
+    localStorage.removeItem("duration");
+    localStorage.removeItem("isWorkoutStarted");
+    localStorage.removeItem("workoutStartTime");
+
+    window.history.replaceState({}, "");
+  };
+
   const finishWorkout = () => {
     const finishedWorkout = structuredClone(workout);
 
@@ -105,10 +136,15 @@ const WorkoutPage = () => {
 
     setWorkout(finishedWorkout);
 
+    localStorage.setItem("workout", JSON.stringify(finishedWorkout));
+
     setDuration(0);
     setIsWorkoutStarted(false);
 
     localStorage.setItem("lastWorkout", JSON.stringify(finishedWorkout));
+
+    localStorage.removeItem("workoutSnapshot");
+    localStorage.removeItem("workoutStartTime");
 
     setShowFinishModal(false);
     window.history.replaceState({}, "");
@@ -154,6 +190,13 @@ const WorkoutPage = () => {
         confirmColor="bg-blue-600 hover:bg-blue-700"
         onCancel={() => setShowStartModal(false)}
         onConfirm={() => {
+          localStorage.setItem(
+            "workoutSnapshot",
+            JSON.stringify(structuredClone(workout)),
+          );
+
+          localStorage.setItem("workoutStartTime", Date.now());
+
           setIsWorkoutStarted(true);
           setShowStartModal(false);
         }}
