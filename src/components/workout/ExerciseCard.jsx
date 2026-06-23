@@ -9,10 +9,50 @@ const formatRestTime = (seconds) => {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 };
 
+const getSupersetStyle = (group) => {
+  switch (group) {
+    case 2:
+      return {
+        badge: "bg-purple-500/20 text-purple-400",
+        border: "border-l-4 border-purple-500",
+        label: "SUPERSET A",
+      };
+
+    case 3:
+      return {
+        badge: "bg-rose-500/20 text-rose-400",
+        border: "border-l-4 border-rose-500",
+        label: "SUPERSET B",
+      };
+
+    case 4:
+      return {
+        badge: "bg-emerald-500/20 text-emerald-400",
+        border: "border-l-4 border-emerald-500",
+        label: "SUPERSET C",
+      };
+
+    case 5:
+      return {
+        badge: "bg-amber-500/20 text-amber-400",
+        border: "border-l-4 border-amber-500",
+        label: "SUPERSET D",
+      };
+
+    default:
+      return {
+        badge: "",
+        border: "",
+        label: "SUPERSET",
+      };
+  }
+};
+
 const ExerciseCard = ({ exercise, workout, setWorkout, startRestTimer }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showRestModal, setShowRestModal] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
+  const supersetStyle = getSupersetStyle(exercise.group);
 
   const menuRef = useRef(null);
 
@@ -76,15 +116,21 @@ const ExerciseCard = ({ exercise, workout, setWorkout, startRestTimer }) => {
 
   return (
     <>
-      <div className="bg-[#171717] border border-zinc-800 rounded-xl overflow-hidden">
+      <div
+        className={`bg-[#171717] border border-zinc-800 rounded-xl overflow-hidden ${
+          exercise.superset ? supersetStyle.border : ""
+        }`}
+      >
         <div className="px-4 pt-4 pb-3">
           <div className="flex justify-between items-start">
             <div>
               <h2 className="text-xl font-bold">{exercise.name}</h2>
 
               {exercise.superset && (
-                <span className="inline-block mt-2 text-xs font-semibold bg-purple-600/20 text-purple-400 px-2 py-1 rounded">
-                  SUPERSET
+                <span
+                  className={`inline-block mt-2 px-2 py-1 rounded text-xs font-semibold ${supersetStyle.badge}`}
+                >
+                  {supersetStyle.label}
                 </span>
               )}
             </div>

@@ -1,4 +1,20 @@
 const SetRow = ({ set, exercise, workout, setWorkout, startRestTimer }) => {
+  const getSetTypeColor = (type) => {
+    switch (type) {
+      case "W":
+        return "text-yellow-400";
+
+      case "F":
+        return "text-red-500";
+
+      case "D":
+        return "text-orange-400";
+
+      default:
+        return "text-white";
+    }
+  };
+
   const updateSet = (field, value) => {
     setWorkout({
       ...workout,
@@ -40,16 +56,41 @@ const SetRow = ({ set, exercise, workout, setWorkout, startRestTimer }) => {
         <select
           value={set.type}
           onChange={(e) => updateSet("type", e.target.value)}
-          className="bg-transparent outline-none text-white"
+          className={`bg-transparent outline-none font-semibold ${getSetTypeColor(
+            set.type,
+          )}`}
         >
-          <option value="W">W</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="F">F</option>
-          <option value="D">D</option>
+          <option value="W" className="text-black">
+            W
+          </option>
+
+          <option value="1" className="text-black">
+            1
+          </option>
+
+          <option value="2" className="text-black">
+            2
+          </option>
+
+          <option value="3" className="text-black">
+            3
+          </option>
+
+          <option value="4" className="text-black">
+            4
+          </option>
+
+          <option value="5" className="text-black">
+            5
+          </option>
+
+          <option value="F" className="text-black">
+            F
+          </option>
+
+          <option value="D" className="text-black">
+            D
+          </option>
         </select>
       </div>
 

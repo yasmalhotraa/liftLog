@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import saturdayWorkout from "../data/saturdayWorkout";
 
@@ -8,6 +9,7 @@ import RestTimer from "../components/workout/RestTimer";
 import ConfirmModal from "../components/common/ConfirmModal";
 
 const WorkoutPage = () => {
+  const location = useLocation();
   const [workout, setWorkout] = useState(() => {
     const savedWorkout = localStorage.getItem("workout");
     return savedWorkout ? JSON.parse(savedWorkout) : saturdayWorkout;
@@ -42,6 +44,12 @@ const WorkoutPage = () => {
   useEffect(() => {
     localStorage.setItem("duration", JSON.stringify(duration));
   }, [duration]);
+
+  useEffect(() => {
+    if (location.state?.autoStart && !isWorkoutStarted) {
+      setIsWorkoutStarted(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isWorkoutStarted) return;
@@ -103,11 +111,18 @@ const WorkoutPage = () => {
     localStorage.setItem("lastWorkout", JSON.stringify(finishedWorkout));
 
     setShowFinishModal(false);
+    window.history.replaceState({}, "");
   };
 
   return (
     <>
       <main className="min-h-screen bg-black text-white px-3 py-4 pb-44">
+        <button
+          onClick={() => window.history.back()}
+          className="mb-5 text-blue-500"
+        >
+          ← Back
+        </button>
         <WorkoutHeader
           workout={workout}
           duration={duration}

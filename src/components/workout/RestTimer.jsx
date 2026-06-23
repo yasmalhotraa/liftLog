@@ -26,7 +26,7 @@ const RestTimer = ({ restTimer, setRestTimer }) => {
               seconds: Math.max(prev.seconds - 15, 0),
             }))
           }
-          className="px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700"
+          className="px-5 py-0 rounded-xl bg-zinc-800 hover:bg-zinc-700"
         >
           -15s
         </button>
@@ -38,23 +38,23 @@ const RestTimer = ({ restTimer, setRestTimer }) => {
               seconds: prev.seconds + 15,
             }))
           }
-          className="px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700"
+          className="px-5 py-0 rounded-xl bg-zinc-800 hover:bg-zinc-700"
         >
           +15s
         </button>
-      </div>
 
-      <button
-        onClick={() =>
-          setRestTimer({
-            isOpen: false,
-            seconds: 0,
-          })
-        }
-        className="w-full mt-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold"
-      >
-        Skip
-      </button>
+        <button
+          onClick={() =>
+            setRestTimer({
+              isOpen: false,
+              seconds: 0,
+            })
+          }
+          className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold"
+        >
+          Skip
+        </button>
+      </div>
     </div>
   );
 };
