@@ -1,0 +1,357 @@
+const saturdayWorkout = {
+  id: 1,
+  name: "Saturday • Legs & Arms",
+
+  exercises: [
+    {
+      id: 1,
+      group: 1,
+      superset: false,
+      partner: null,
+      name: "Romanian Deadlift (Barbell)",
+      restTime: 120,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "W",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 3,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 4,
+          type: "F",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 5,
+          type: "D",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 2,
+      group: 2,
+      superset: true,
+      partner: 3,
+      name: "Single Leg Extension",
+      restTime: 90,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 3,
+          type: "3",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 4,
+          type: "4",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 3,
+      group: 2,
+      superset: true,
+      partner: 2,
+      name: "Hanging Leg Raise",
+      restTime: 90,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 3,
+          type: "3",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 4,
+          type: "4",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 4,
+      group: 3,
+      superset: true,
+      partner: 5,
+      name: "Tricep Pushdown (Cable)",
+      restTime: 90,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 3,
+          type: "3",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 4,
+          type: "4",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 5,
+      group: 3,
+      superset: true,
+      partner: 4,
+      name: "Behind the Back Curl (Cable)",
+      restTime: 90,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 3,
+          type: "3",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 4,
+          type: "4",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 6,
+      group: 4,
+      superset: true,
+      partner: 7,
+      name: "Single Arm Tricep Pushdown (Cable)",
+      restTime: 90,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 7,
+      group: 4,
+      superset: true,
+      partner: 6,
+      name: "Preacher Curl (Machine)",
+      restTime: 90,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 8,
+      group: 5,
+      superset: true,
+      partner: 9,
+      name: "Skullcrusher (Dumbbell)",
+      restTime: 120,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+
+    {
+      id: 9,
+      group: 5,
+      superset: true,
+      partner: 8,
+      name: "Hammer Curl (Dumbbell)",
+      restTime: 120,
+      notes: "",
+
+      sets: [
+        {
+          id: 1,
+          type: "1",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+        {
+          id: 2,
+          type: "2",
+          previous: "",
+          weight: "",
+          reps: "",
+          completed: false,
+        },
+      ],
+    },
+  ],
+};
+
+export default saturdayWorkout;
