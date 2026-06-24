@@ -49,7 +49,10 @@ const HomePage = () => {
   return (
     <main className="min-h-screen bg-black text-white px-4 py-6 pb-32">
       <div className="mb-10">
-        <h1 className="text-4xl font-extrabold tracking-tight">🏋️ LiftLog</h1>
+        <h1 className="text-4xl text-center font-extrabold tracking-tight flex gap-5 items-center">
+          <img src="/masked-icon.svg" alt="icon" className="w-15 h-auto" />
+          LiftLog
+        </h1>
 
         <p className="text-zinc-500 mt-2">
           Track your workouts. Stay consistent.

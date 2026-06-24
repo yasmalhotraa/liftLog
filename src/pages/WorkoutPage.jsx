@@ -73,10 +73,28 @@ const WorkoutPage = () => {
     if (!restTimer.isOpen) return;
 
     if (restTimer.seconds <= 0) {
+      // Haptic (supported devices)
+      if ("vibrate" in navigator) {
+        navigator.vibrate([200, 100, 200]);
+      }
+
+      // Browser notification
+      if ("Notification" in window) {
+        if (Notification.permission === "granted") {
+          new Notification("LiftLog", {
+            body: "Rest time is over!",
+            icon: "/pwa-192x192.png",
+          });
+        } else if (Notification.permission !== "denied") {
+          Notification.requestPermission();
+        }
+      }
+
       setRestTimer({
         isOpen: false,
         seconds: 0,
       });
+
       return;
     }
 
